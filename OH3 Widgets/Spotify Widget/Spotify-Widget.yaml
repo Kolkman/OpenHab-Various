@@ -8,15 +8,17 @@ props:
       required: false
       type: TEXT
     - context: item
-      label: Find a Spotify Player Bridge (SpotifyPlayerBridge)
+      label: Select a 'Spotify Player Bridge' (SpotifyPlayerBridge)
       name: prefix
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: Jan 25, 2021, 12:40:25 AM
+timestamp: Jan 25, 2021, 2:21:36 PM
 component: f7-card
 config:
   title: =props.title
+  style:
+    min-width: 270px
 slots:
   default:
     - component: f7-row
@@ -25,13 +27,13 @@ slots:
           - component: Label
             config:
               text: "Artist:"
-              class: -display-flex
+              style:
+                font-size: 10px
     - component: f7-row
       config:
         style:
           position: relative
           top: -10px
-          heigh: 30px
         class:
           - justify-content-center
       slots:
@@ -40,22 +42,26 @@ slots:
             config:
               text: =items[props.prefix+"_MediaArtist"].state || "-"
               style:
-                fontsize: 28px
                 white-space: nowrap
                 overflow: hidden
+                font-size: normal
+                font-weight: bold
+                font-style: italic
     - component: f7-row
+      config:
+        height: 11px
       slots:
         default:
           - component: Label
             config:
               text: "Title:"
-              class: -display-flex
+              style:
+                font-size: 10px
     - component: f7-row
       config:
         style:
           position: relative
           top: -10px
-          heigh: 30px
         class:
           - justify-content-center
       slots:
@@ -64,22 +70,23 @@ slots:
             config:
               text: =items[props.prefix+"_MediaTitle"].state || "-"
               style:
-                fontsize: 28px
                 white-space: nowrap
                 overflow: hidden
+                font-size: normal
+                font-weight: bold
     - component: f7-row
       slots:
         default:
           - component: Label
             config:
               text: "Album:"
-              class: -display-flex
+              style:
+                font-size: 10px
     - component: f7-row
       config:
         style:
           position: relative
           top: -10px
-          height: 20px
         class:
           - justify-content-center
       slots:
@@ -88,9 +95,10 @@ slots:
             config:
               text: =items[props.prefix+"_AlbumName"].state || "-"
               style:
-                fontsize: 28px
                 white-space: nowrap
                 overflow: hidden
+                font-size: normal
+                font-style: italic
     - component: f7-row
       config:
         class:
@@ -119,7 +127,7 @@ slots:
               class: margin display-flex align-items-center
               style:
                 fontSize: 12px
-                min-width: calc(100% - 40px)
+                width: calc(100% - 80px)
             slots:
               default:
                 - component: Label
@@ -219,7 +227,7 @@ slots:
               style:
                 height: 20px
                 fontSize: 20px
-                min-width: calc(100% - 20px)
+                width: calc(100% - 80px)
             slots:
               default:
                 - component: f7-icon
@@ -239,64 +247,48 @@ slots:
         class: -justify-content-space-around -align-items-center -align-content-stretch
         style:
           position: relative
-          top: -0px
+          top: -20px
       slots:
         default:
-          - component: f7-card
+          - component: f7-col
             config:
               noShadow: true
-              class: display-flex align-items-center
+              class: resizable
               style:
                 fontSize: 20px
-                min-width: 100px
-                width: 45%
+                overflow: hidden
             slots:
               default:
-                - component: f7-icon
-                  config:
-                    f7: hifispeaker
-                    size: 20
-                    class: margin
                 - component: oh-label-card
                   config:
+                    background: "#333"
+                    icon: f7:hifispeaker
+                    iconSize: 20
                     action: options
                     actionItem: =props.prefix+"_ActiveDevices"
                     item: =props.prefix+"_ActiveDevices"
                     style:
-                      position: absolute
                       height: 100%
-                      width: calc(100% - 25px)
-                      top: 0px
-                      vertical-align: top
-                    fontSize: medium
-          - component: f7-card
+                      top: -10px
+                    fontSize: small
+          - component: f7-col
             config:
               noShadow: true
-              class: display-flex align-items-center
+              class: resizable
+              medium: 50
               style:
                 fontSize: 20px
-                min-width: 130px
-                width: 45%
-                vertical-align: top
+                overflow: hidden
             slots:
               default:
-                - component: f7-icon
-                  config:
-                    f7: music_note_list
-                    size: 20
-                    class: margin
                 - component: oh-label-card
                   config:
+                    background: "#333"
+                    icon: f7:music_note_list
+                    iconSize: 20
                     action: options
                     actionItem: =props.prefix+"_Playlists"
                     item: =props.prefix+"_Playlists"
                     style:
-                      position: absolute
                       height: 100%
-                      top: 0px
-                      width: calc (100%-30px)
-                      overflow: hidden
                     fontSize: small
-
-
-
