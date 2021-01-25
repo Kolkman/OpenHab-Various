@@ -19,3 +19,8 @@ In OpenHab 3.0
  ##### Use the widget
  * in your pages editor you can select the widget from your Personal Widgets
  * in its properties you have to select the SpotifyPlayerBridge you created above. The widget will use that string to select all the channels it needs for operations. 
+
+
+#### Acknowledgement
+
+The [Sonos Interface](https://community.openhab.org/t/sonos-player-widget-for-oh3-mainui/108327) got me going.
