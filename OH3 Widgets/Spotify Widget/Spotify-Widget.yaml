@@ -13,7 +13,7 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: Jan 25, 2021, 2:21:36 PM
+timestamp: Jan 25, 2021, 6:20:06 PM
 component: f7-card
 config:
   title: =props.title
@@ -22,6 +22,16 @@ config:
 slots:
   default:
     - component: f7-row
+      config:
+        class: '= (items[props.prefix+"_ActiveDeviceName"].state !== "NULL")?"display-none":"display-flex justify-content-center"'
+      slots:
+        default:
+          - component: Label
+            config:
+              text: "This Spotify Bridge is Unavailable" 
+    - component: f7-row
+      config:
+        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-left"'
       slots:
         default:
           - component: Label
@@ -34,8 +44,7 @@ slots:
         style:
           position: relative
           top: -10px
-        class:
-          - justify-content-center
+        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-center"'
       slots:
         default:
           - component: Label
@@ -50,6 +59,7 @@ slots:
     - component: f7-row
       config:
         height: 11px
+        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-left"'
       slots:
         default:
           - component: Label
@@ -62,8 +72,7 @@ slots:
         style:
           position: relative
           top: -10px
-        class:
-          - justify-content-center
+        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-center"'
       slots:
         default:
           - component: Label
@@ -75,6 +84,8 @@ slots:
                 font-size: normal
                 font-weight: bold
     - component: f7-row
+      config:
+        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-left"'
       slots:
         default:
           - component: Label
@@ -87,8 +98,7 @@ slots:
         style:
           position: relative
           top: -10px
-        class:
-          - justify-content-center
+        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-center"'
       slots:
         default:
           - component: Label
@@ -101,9 +111,7 @@ slots:
                 font-style: italic
     - component: f7-row
       config:
-        class:
-          - margin-vertical
-          - justify-content-center
+        class: '=(items[props.prefix+"_AlbumImage"].state === "NULL")?"display-none" : "- margin-vertical - justify-content-center"'
       slots:
         default:
           - component: oh-image
