@@ -252,7 +252,10 @@ slots:
                     item: =props.prefix+"_Volume"
     - component: f7-row
       config:
-        class: -justify-content-space-around -align-items-center -align-content-stretch
+        class: 
+          - justify-content-space-around
+          - align-items-center
+          - align-content-stretch
         style:
           position: relative
           top: -20px
