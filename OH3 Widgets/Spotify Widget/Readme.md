@@ -5,9 +5,8 @@ In OpenHab 3.0
 ##### Create the thing and needed items
  * Install the OpenHab Spotify Binding
  * For each user configure a Spotify Player Bridge as a Thing
- * In your Model page choose 'create Equipment from Thing' (for each user you have a thing, so you may need to do this more than once)
-     * Select all defaults. Additonally thick 'Show Advanced' and and include 'Track Progres (ms)' and 'Track Duration (ms)' 
- 
+ * In your Model page choose 'Create Equipment from Thing' (for each user you have a thing, so you may need to do this more than once)
+     * Select all defaults. Additonally thick 'Show Advanced' and include 'Track Progress (ms)' and 'Track Duration (ms)' 
  
 ##### Install the widget
  * Go to the 'Developers Tools'
@@ -17,8 +16,8 @@ In OpenHab 3.0
  * Safe the lot: ctrl+s
  
  ##### Use the widget
- * in your pages editor you can select the widget from your Personal Widgets
- * in its properties you have to select the SpotifyPlayerBridge you created above. The widget will use that string to select all the channels it needs for operations. 
+ * In your pages editor you can select the widget from your personal widgets
+ * In its properties you have to select the SpotifyPlayerBridge you created above. The widget will use that string to select all the channels it needs for operations. 
 
 
 #### Acknowledgement
