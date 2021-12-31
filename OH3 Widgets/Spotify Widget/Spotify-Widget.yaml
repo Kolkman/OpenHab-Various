@@ -1,138 +1,208 @@
-uid: Spotify_widget_0.00
+uid: Spotify_widget_0.01
 tags: []
 props:
   parameters:
-    - description: Title for the widget
+    - description: Title for the Widget
       label: Static Title
       name: title
       required: false
       type: TEXT
     - context: item
-      label: Select a 'Spotify Player Bridge' (SpotifyPlayerBridge)
-      name: prefix
+      label: Item with Track Player
+      name: trackPlayer
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Active Device Name
+      name: activeDeviceName
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Active Device Volume
+      name: activeDeviceVolume
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Active Device Shuffle
+      name: activeDeviceShuffle
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Repeat Mode
+      name: repeatMode
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Artist Name
+      name: artistName
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Track Name
+      name: trackName
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Track Progress
+      name: trackProgress
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Track Duration
+      name: trackDuration
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Track Progress (ms)
+      name: trackProgressMs
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Track Duration (ms)
+      name: trackDurationMs
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Album Name
+      name: albumName
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Album Image
+      name: albumImage
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Active Devices
+      name: activeDevices
+      required: false
+      type: TEXT
+    - context: item
+      label: Item with Playlists
+      name: playlists
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: Jan 25, 2021, 6:20:06 PM
+timestamp: Dec 31, 2021, 11:10:24 AM
 component: f7-card
 config:
-  title: =props.title
   style:
     min-width: 270px
+  title: =props.title
 slots:
   default:
     - component: f7-row
       config:
-        class: '= (items[props.prefix+"_ActiveDeviceName"].state !== "NULL")?"display-none":"display-flex justify-content-center"'
+        class: = (items[props.activeDeviceName].state !== "NULL")?"display-none":"display-flex justify-content-center"
       slots:
         default:
           - component: Label
             config:
-              text: "This Spotify Bridge is Unavailable" 
+              text: This Spotify Bridge is Unavailable
     - component: f7-row
       config:
-        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-left"'
+        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-left"
       slots:
         default:
           - component: Label
             config:
+              style:
+                font-size: 10px
               text: "Artist:"
-              style:
-                font-size: 10px
     - component: f7-row
       config:
+        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-center"
         style:
           position: relative
           top: -10px
-        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-center"'
       slots:
         default:
           - component: Label
             config:
-              text: =items[props.prefix+"_MediaArtist"].state || "-"
               style:
-                white-space: nowrap
-                overflow: hidden
                 font-size: normal
-                font-weight: bold
                 font-style: italic
+                font-weight: bold
+                overflow: hidden
+                white-space: nowrap
+              text: =items[props.artistName].state || "-"
     - component: f7-row
       config:
+        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-left"
         height: 11px
-        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-left"'
       slots:
         default:
           - component: Label
             config:
-              text: "Title:"
               style:
                 font-size: 10px
+              text: "Title:"
     - component: f7-row
       config:
+        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-center"
         style:
           position: relative
           top: -10px
-        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-center"'
       slots:
         default:
           - component: Label
             config:
-              text: =items[props.prefix+"_MediaTitle"].state || "-"
               style:
-                white-space: nowrap
-                overflow: hidden
                 font-size: normal
                 font-weight: bold
+                overflow: hidden
+                white-space: nowrap
+              text: =items[props.trackName].state || "-"
     - component: f7-row
       config:
-        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-left"'
+        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-left"
       slots:
         default:
           - component: Label
             config:
-              text: "Album:"
               style:
                 font-size: 10px
+              text: "Album:"
     - component: f7-row
       config:
+        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-center"
         style:
           position: relative
           top: -10px
-        class: '= (items[props.prefix+"_ActiveDeviceName"].state === "NULL")?"display-none":"display-flex justify-content-center"'
       slots:
         default:
           - component: Label
             config:
-              text: =items[props.prefix+"_AlbumName"].state || "-"
               style:
-                white-space: nowrap
-                overflow: hidden
                 font-size: normal
                 font-style: italic
+                overflow: hidden
+                white-space: nowrap
+              text: =items[props.albumName].state || "-"
     - component: f7-row
       config:
-        class: '=(items[props.prefix+"_AlbumImage"].state === "NULL")?"display-none" : "- margin-vertical - justify-content-center"'
+        class: '=(items[props.albumImage].state === "NULL")?"display-none" : "- margin-vertical - justify-content-center"'
       slots:
         default:
           - component: oh-image
             config:
-              item: =props.prefix+"_AlbumImage"
+              item: =props.albumImage
               style:
                 width: 70%
     - component: f7-row
       config:
-        style:
-          position: relative
-          top: -10px
-          height: 20px
         class:
           - justify-content-center
+        style:
+          height: 20px
+          position: relative
+          top: -10px
       slots:
         default:
           - component: f7-card
             config:
-              noShadow: true
               class: margin display-flex align-items-center
+              noShadow: true
               style:
                 fontSize: 12px
                 width: calc(100% - 80px)
@@ -140,17 +210,17 @@ slots:
               default:
                 - component: Label
                   config:
-                    text: = items[props.prefix+"_TrackProgressmss"].state
+                    text: = items[props.trackProgress].state
                 - component: f7-progressbar
                   config:
                     color: teal
+                    item: props.trackProgress
+                    progress: = 100 * items[props.trackProgressMs].state / items[props.trackDurationMs].state
                     style:
                       height: +2px
-                    item: props.prefix+"_TrackProgressms"
-                    progress: = 100 * items[props.prefix+"_TrackProgressms"].state / items[props.prefix+"_TrackDurationms"].state
                 - component: Label
                   config:
-                    text: = items[props.prefix+"_TrackDurationmss"].state
+                    text: = items[props.trackDuration].state
     - component: f7-row
       config:
         class:
@@ -166,93 +236,93 @@ slots:
         default:
           - component: f7-icon
             config:
-              f7: '=(props.prefix+"_ActiveDeviceShuffle") ? "shuffle" : ""'
+              color: '=(items[props.activeDeviceShuffle].state === "ON") ? "green" : ""'
+              f7: '=(props.activeDeviceShuffle) ? "shuffle" : ""'
               size: 20
-              color: '=(items[props.prefix+"_ActiveDeviceShuffle"].state === "ON") ? "green" : ""'
               style:
-                position: relative
                 left: +7%
+                position: relative
             slots:
               default:
                 - component: oh-button
                   config:
                     action: command
-                    actionItem: = props.prefix+"_ActiveDeviceShuffle"
-                    actionCommand: '=(items[props.prefix+"_ActiveDeviceShuffle"].state !== "ON") ? "ON" : "OFF"'
+                    actionCommand: '=(items[props.activeDeviceShuffle].state !== "ON") ? "ON" : "OFF"'
+                    actionItem: = props.activeDeviceShuffle
                     style:
-                      position: absolute
-                      width: 100%
                       height: 100%
+                      position: absolute
                       top: 0px
+                      width: 100%
           - component: oh-player-item
             config:
-              style:
-                width: 150px
-              item: =props.prefix+"_MediaControl"
               class:
                 - display-flex
                 - margin-
                 - align-content-stretch
                 - align-items-center
                 - justify-content-space-around
+              item: =props.trackPlayer
+              style:
+                width: 150px
           - component: f7-icon
             config:
-              f7: '=(props.prefix+"_RepeatMode") ? (items[props.prefix+"_RepeatMode"].state === "context") ? "repeat" : (items[props.prefix+"_RepeatMode"].state === "track") ? "repeat_1" : "repeat" : ""'
+              color: '=(items[props.repeatMode].state === "context") ? "green" : (items[props.repeatMode].state === "track") ? "green" : ""'
+              f7: '=(props.repeatMode) ? (items[props.repeatMode].state === "context") ? "repeat" : (items[props.repeatMode].state === "track") ? "repeat_1" : "repeat" : ""'
               size: 20
-              color: '=(items[props.prefix+"_RepeatMode"].state === "context") ? "green" : (items[props.prefix+"_RepeatMode"].state === "track") ? "green" : ""'
               style:
-                position: relative
                 left: -8%
+                position: relative
             slots:
               default:
                 - component: oh-button
                   config:
                     action: command
-                    actionItem: = props.prefix+"_RepeatMode"
-                    actionCommand: '=(items[props.prefix+"_RepeatMode"].state === "context") ? "track" : (items[props.prefix+"_RepeatMode"].state === "track") ? "off": "context"'
+                    actionCommand: '=(items[props.repeatMode].state === "context") ? "track" : (items[props.repeatMode].state === "track") ? "off": "context"'
+                    actionItem: = props.repeatMode
                     style:
-                      position: absolute
-                      width: 100%
                       height: 100%
+                      position: absolute
                       top: 0px
+                      width: 100%
     - component: f7-row
       config:
-        style:
-          position: relative
-          top: 0px
         class:
           - justify-content-space-around
           - display-flex
           - align-items-center
           - align-content-stretch
           - margin-top
+        style:
+          position: relative
+          top: 0px
       slots:
         default:
           - component: f7-card
             config:
-              noShadow: true
               class: margin display-flex align-items-center
+              noShadow: true
               style:
-                height: 20px
                 fontSize: 20px
+                height: 20px
                 width: calc(100% - 80px)
             slots:
               default:
                 - component: f7-icon
                   config:
-                    f7: speaker_3
                     class: margin-horizontal margin
+                    f7: speaker_3
                     size: 25
                 - component: oh-slider
                   config:
+                    item: =props.activeDeviceVolume
                     label: true
                     style:
-                      width: calc(100% - 30px)
                       min: 0
-                    item: =props.prefix+"_Volume"
+                      width: calc(100% - 30px)
     - component: f7-row
       config:
-        class: 
+        class:
           - justify-content-space-around
           - align-items-center
           - align-content-stretch
@@ -263,8 +333,8 @@ slots:
         default:
           - component: f7-col
             config:
-              noShadow: true
               class: resizable
+              noShadow: true
               style:
                 fontSize: 20px
                 overflow: hidden
@@ -272,21 +342,21 @@ slots:
               default:
                 - component: oh-label-card
                   config:
+                    action: options
+                    actionItem: =props.activeDevices
                     background: "#333"
+                    fontSize: small
                     icon: f7:hifispeaker
                     iconSize: 20
-                    action: options
-                    actionItem: =props.prefix+"_ActiveDevices"
-                    item: =props.prefix+"_ActiveDevices"
+                    item: =props.activeDevices
                     style:
                       height: 100%
                       top: -10px
-                    fontSize: small
           - component: f7-col
             config:
-              noShadow: true
               class: resizable
               medium: 50
+              noShadow: true
               style:
                 fontSize: 20px
                 overflow: hidden
@@ -294,12 +364,12 @@ slots:
               default:
                 - component: oh-label-card
                   config:
+                    action: options
+                    actionItem: =props.playlists
                     background: "#333"
+                    fontSize: small
                     icon: f7:music_note_list
                     iconSize: 20
-                    action: options
-                    actionItem: =props.prefix+"_Playlists"
-                    item: =props.prefix+"_Playlists"
+                    item: =props.playlists
                     style:
                       height: 100%
-                    fontSize: small
