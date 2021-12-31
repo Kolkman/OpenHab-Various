@@ -83,7 +83,7 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: Dec 31, 2021, 12:56:27 PM
+timestamp: Dec 31, 2021, 1:47:13 PM
 component: f7-card
 config:
   style:
@@ -154,7 +154,7 @@ slots:
                       position: relative
                 - component: f7-progressbar
                   config:
-                    color: teal
+                    color: green
                     item: props.trackProgress
                     progress: = 100 * items[props.trackProgressMs].state / items[props.trackDurationMs].state
                     style:
@@ -252,6 +252,7 @@ slots:
                     size: 25
                 - component: oh-slider
                   config:
+                    color: green
                     item: =props.activeDeviceVolume
                     label: true
                     style:
