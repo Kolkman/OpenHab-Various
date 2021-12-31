@@ -104,7 +104,7 @@ slots:
         class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-center"
         style:
           position: relative
-          top: 8px
+          top: 5px
       slots:
         default:
           - component: Label
@@ -148,6 +148,10 @@ slots:
                 - component: Label
                   config:
                     text: = items[props.trackProgress].state
+                    style:
+                      left: -1%
+                      top: -1px
+                      position: relative
                 - component: f7-progressbar
                   config:
                     color: teal
@@ -158,6 +162,10 @@ slots:
                 - component: Label
                   config:
                     text: = items[props.trackDuration].state
+                    style:
+                      left: +1%
+                      top: -1px
+                      position: relative
     - component: f7-row
       config:
         class:
@@ -166,9 +174,6 @@ slots:
           - align-items-center
           - align-content-stretch
           - margin-top
-        style:
-          position: relative
-          top: -0px
       slots:
         default:
           - component: f7-icon
