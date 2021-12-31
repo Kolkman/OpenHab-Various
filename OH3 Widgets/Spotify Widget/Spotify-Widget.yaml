@@ -182,7 +182,7 @@ slots:
               f7: '=(props.activeDeviceShuffle) ? "shuffle" : ""'
               size: 20
               style:
-                left: +7%
+                left: +8%
                 position: relative
             slots:
               default:
@@ -222,11 +222,6 @@ slots:
                     action: command
                     actionCommand: '=(items[props.repeatMode].state === "context") ? "track" : (items[props.repeatMode].state === "track") ? "off": "context"'
                     actionItem: = props.repeatMode
-                    style:
-                      height: 100%
-                      position: absolute
-                      top: 0px
-                      width: 100%
     - component: f7-row
       config:
         class:
@@ -268,9 +263,6 @@ slots:
           - justify-content-space-around
           - align-items-center
           - align-content-stretch
-        style:
-          position: relative
-          top: -20px
       slots:
         default:
           - component: f7-col
