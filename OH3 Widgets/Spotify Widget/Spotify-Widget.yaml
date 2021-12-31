@@ -83,7 +83,7 @@ props:
       required: false
       type: TEXT
   parameterGroups: []
-timestamp: Dec 31, 2021, 11:10:24 AM
+timestamp: Dec 31, 2021, 12:56:27 PM
 component: f7-card
 config:
   style:
@@ -101,20 +101,10 @@ slots:
               text: This Spotify Bridge is Unavailable
     - component: f7-row
       config:
-        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-left"
-      slots:
-        default:
-          - component: Label
-            config:
-              style:
-                font-size: 10px
-              text: "Artist:"
-    - component: f7-row
-      config:
         class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-center"
         style:
           position: relative
-          top: -10px
+          top: 8px
       slots:
         default:
           - component: Label
@@ -125,60 +115,7 @@ slots:
                 font-weight: bold
                 overflow: hidden
                 white-space: nowrap
-              text: =items[props.artistName].state || "-"
-    - component: f7-row
-      config:
-        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-left"
-        height: 11px
-      slots:
-        default:
-          - component: Label
-            config:
-              style:
-                font-size: 10px
-              text: "Title:"
-    - component: f7-row
-      config:
-        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-center"
-        style:
-          position: relative
-          top: -10px
-      slots:
-        default:
-          - component: Label
-            config:
-              style:
-                font-size: normal
-                font-weight: bold
-                overflow: hidden
-                white-space: nowrap
-              text: =items[props.trackName].state || "-"
-    - component: f7-row
-      config:
-        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-left"
-      slots:
-        default:
-          - component: Label
-            config:
-              style:
-                font-size: 10px
-              text: "Album:"
-    - component: f7-row
-      config:
-        class: = (items[props.activeDeviceName].state === "NULL")?"display-none":"display-flex justify-content-center"
-        style:
-          position: relative
-          top: -10px
-      slots:
-        default:
-          - component: Label
-            config:
-              style:
-                font-size: normal
-                font-style: italic
-                overflow: hidden
-                white-space: nowrap
-              text: =items[props.albumName].state || "-"
+              text: = items[props.artistName].state + " - " + items[props.trackName].state + " (" + items[props.albumName].state + ")" || "-"
     - component: f7-row
       config:
         class: '=(items[props.albumImage].state === "NULL")?"display-none" : "- margin-vertical - justify-content-center"'
