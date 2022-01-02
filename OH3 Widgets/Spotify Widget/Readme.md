@@ -48,4 +48,6 @@ In OpenHab 3.0
 
 The [Sonos Interface](https://community.openhab.org/t/sonos-player-widget-for-oh3-mainui/108327) got me going.
 
+Thanks for contributions by [Julien702](https://github.com/Julian702)
+
 ![Spotify-Widget](SpotifyWidget.jpg)
